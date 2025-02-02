@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT | 株式会社 ファッション ディレクト サンレディ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <section class="page-header">
+            <h1>ABOUT</h1>
+        </section>
+        <section class="company-info">
+            <table>
+                <tr>
+                    <th>社名</th>
+                    <td>株式会社 ファッション ディレクト サンレディ</td>
+                </tr>
+                <tr>
+                    <th>所在地</th>
+                    <td>
+                        〒150-0021<br>
+                        東京都渋谷区恵比寿西1-32-11 ヴァイスハイム 3F
+                    </td>
+                </tr>
+                <tr>
+                    <th>TEL</th>
+                    <td>03-3462-2751</td>
+                </tr>
+                <tr>
+                    <th>FAX</th>
+                    <td>03-3462-2750</td>
+                </tr>
+                <tr>
+                    <th>設立</th>
+                    <td>1968年</td>
+                </tr>
+                <tr>
+                    <th>代表者</th>
+                    <td>代表取締役　田代 修一</td>
+                </tr>
+                <tr>
+                    <th>事業内容</th>
+                    <td>
+                        <ul class="business-list">
+                            <li>ファッションショー及びイベント企画制作運営</li>
+                            <li>アパレル企画及びODM業務</li>
+                            <li>企業プロモーション・PR及びキャスティング業務</li>
+                            <li>人材育成プログラム／ビジネスマナー研修／接客接遇講座／就職面接対策</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <div id="footer"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS | Your Company Name</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <section class="page-header">
+            <h1>NEWS</h1>
+        </section>
+        <section class="news-list">
+            <article class="news-item-list">
+                <a href="#" class="news-link">
+                    <div class="news-image">
+                        <img src="https://placehold.co/800x400" alt="ニュース1">
+                    </div>
+                    <div class="news-text">
+                        <time>2024.01.01</time>
+                        <h2>新製品発表のお知らせ</h2>
+                    </div>
+                </a>
+            </article>
+            <article class="news-item-list">
+                <a href="#" class="news-link">
+                    <div class="news-image">
+                        <img src="https://placehold.co/800x400" alt="ニュース2">
+                    </div>
+                    <div class="news-text">
+                        <time>2023.12.25</time>
+                        <h2>展示会出展のご案内</h2>
+                    </div>
+                </a>
+            </article>
+            <article class="news-item-list">
+                <a href="#" class="news-link">
+                    <div class="news-image">
+                        <img src="https://placehold.co/800x400" alt="ニュース3">
+                    </div>
+                    <div class="news-text">
+                        <time>2023.12.20</time>
+                        <h2>年末年始営業日のお知らせ</h2>
+                    </div>
+                </a>
+            </article>
+        </section>
+    </main>
+    <div id="footer"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,26 @@
+{
+  "news": [
+    {
+      "id": 1,
+      "date": "2024-01-01T10:00:00",
+      "title": "新製品発表のお知らせ",
+      "content": "新製品に関する詳細な内容がここに入ります。",
+      "image": {
+        "url": "https://placehold.co/800x400",
+        "alt": "新製品の画像"
+      },
+      "slug": "new-product-announcement"
+    },
+    {
+      "id": 2,
+      "date": "2023-12-25T15:30:00",
+      "title": "展示会出展のご案内",
+      "content": "展示会に関する詳細な内容がここに入ります。",
+      "image": {
+        "url": "https://placehold.co/800x400",
+        "alt": "展示会の画像"
+      },
+      "slug": "exhibition-announcement"
+    }
+  ]
+} 

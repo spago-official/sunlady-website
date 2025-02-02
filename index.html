@@ -3,14 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cursor Website</title>
+    <title>TOP | Your Company Name</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body>
-    <h1>Welcome to My Website ようこそ</h1>
-    <p>Cursor を使って Web サイトを作りました！</p>
-    <button id="btn">クリックしてみて</button>
-    
-    <script src="script.js"></script>
+    <div id="header"></div>
+    <main>
+        <section class="news-carousel">
+            <div class="swiper">
+                <div class="swiper-wrapper" id="newsCarousel">
+                    <!-- カルーセルアイテムはJavaScriptで動的に生成されます -->
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // ヘッダーとフッターの読み込み
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer').innerHTML = data;
+            });
+
+        // ニュース記事の読み込みとカルーセルの初期化
+        fetch('news.json')
+            .then(response => response.json())
+            .then(data => {
+                // 日付でソートして最新3件を取得
+                const latestNews = data.news
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 3);
+
+                const carouselElement = document.getElementById('newsCarousel');
+                latestNews.forEach(news => {
+                    const slide = document.createElement('div');
+                    slide.className = 'swiper-slide';
+                    slide.innerHTML = `
+                        <div class="news-item">
+                            <a href="/news/${news.slug}">
+                                <img src="${news.image.url}" alt="${news.image.alt}">
+                                <div class="news-content">
+                                    <time>${formatDate(news.date)}</time>
+                                    <h2>${news.title}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                    carouselElement.appendChild(slide);
+                });
+
+                // Swiperの初期化
+                const swiper = new Swiper('.swiper', {
+                    slidesPerView: 1,
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                });
+            });
+
+        // 日付フォーマット用の関数
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}.${month}.${day}`;
+        }
+    </script>
 </body>
-</html>”
+</html>
